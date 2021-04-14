@@ -15,12 +15,14 @@ import java.util.logging.Logger;
  * @author Ivan Espitia
  */
 public class JugadorTwo extends Thread{
-     private String nombre;
+    private String equipo;
+    private String nombre;
     private ArrayList lista = new ArrayList();
 
-    public JugadorTwo(String nombre,ArrayList lista) {
+    public JugadorTwo(String nombre,ArrayList lista,String equipo) {
         this.nombre = nombre;
         this.lista = lista;
+        this.equipo = equipo;
     }
     
     
@@ -29,7 +31,7 @@ public class JugadorTwo extends Thread{
     
     public void run(){
         
-        synchronized(lista){
+           synchronized(lista){
             int aux = (int) lista.get(lista.size()-1);
             //si el valor final de la cola es diferente de 10 dormir hilo
             if(aux!=10){
@@ -43,7 +45,8 @@ public class JugadorTwo extends Thread{
             System.out.println("Comienza a correr " +nombre);
             avanzar();
          
-        }
+        
+         }
         
     }
     public void avanzar(){
@@ -70,4 +73,6 @@ public class JugadorTwo extends Thread{
         lista.notifyAll();
       
     }
+    
+    
 }

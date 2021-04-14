@@ -16,27 +16,30 @@ import java.util.Vector;
  */
 public class JugadorOne extends Thread {
     private String nombre;
+    private String equipo;
     private ArrayList lista = new ArrayList();
     
 
-     public JugadorOne(String nombre,ArrayList lista) {
+     public JugadorOne(String nombre,ArrayList lista,String equipo) {
         this.nombre = nombre;
         this.lista = lista;
+        this.equipo = equipo;
     }
     
     
     
     
     public void run(){
+       
          synchronized(lista){
              System.out.println("Comienza a correr "+nombre);
             avanzar();
             
+        
         }
-         
     }
     public void avanzar(){
-       
+        
         int posicion=0;
         int j=0;
         while(posicion != 10){
@@ -55,16 +58,22 @@ public class JugadorOne extends Thread {
             j++;
         }
         lista.notifyAll();
-       
+        
     }
 
     public ArrayList getLista() {
         return lista;
     }
-
-    public void setLista(ArrayList lista) {
-        this.lista = lista;
+    public String getNombre() {
+        return nombre;
     }
+
+    public String getEquipo() {
+        return equipo;
+    }
+    
+  
+    
     
     
     

@@ -9,18 +9,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javafx.application.Platform.exit;
 
 /**
  *
  * @author Ivan Espitia
  */
-public class JugadorThree extends Thread{
-      private String nombre;
+public class JugadorThree extends Thread {
+    private String estado;
+    private String equipo;
+    private String nombre;
     private ArrayList lista = new ArrayList();
 
-    public JugadorThree(String nombre,ArrayList lista) {
+    public JugadorThree(String nombre,ArrayList lista,String equipo) {
         this.nombre = nombre;
         this.lista = lista;
+        this.equipo = equipo;
     }
     
    
@@ -30,6 +34,7 @@ public class JugadorThree extends Thread{
         synchronized(lista){
             int aux = (int) lista.get(lista.size()-1);
             //si el valor final de la cola es diferente de 20 dormir hilo
+            
             if(aux!=20){
              try {
                     lista.wait();
@@ -42,6 +47,7 @@ public class JugadorThree extends Thread{
                 avanzar();
          
         }
+         
         
     }
     public void avanzar(){
@@ -64,6 +70,19 @@ public class JugadorThree extends Thread{
             j++;
             
         }
+        if (lista.get(lista.size()-1).equals(30)){
+            estado="Ganador";
+            System.out.println("Ganadores :"+equipo);
+            System.exit(0);
+           
+        }
+        
+        
+        
       
+    }
+
+    public String getEstado() {
+        return estado;
     }
 }
