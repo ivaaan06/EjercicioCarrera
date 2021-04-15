@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static javafx.application.Platform.exit;
-import jdk.nashorn.internal.ir.BreakNode;
+
+
 
 /**
  *

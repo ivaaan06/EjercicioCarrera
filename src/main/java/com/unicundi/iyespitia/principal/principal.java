@@ -12,7 +12,7 @@ import com.unicundi.iyepitia.logica.JugadorTwo;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static javafx.application.Platform.exit;
+
 
 /**
  *
