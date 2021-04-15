@@ -18,7 +18,7 @@ public class JugadorTwo extends Thread{
     private String equipo;
     private String nombre;
     private ArrayList lista = new ArrayList();
-
+   
     public JugadorTwo(String nombre,ArrayList lista,String equipo) {
         this.nombre = nombre;
         this.lista = lista;
@@ -28,7 +28,7 @@ public class JugadorTwo extends Thread{
     
     
     
-    
+    @Override
     public void run(){
         
            synchronized(lista){
@@ -42,7 +42,7 @@ public class JugadorTwo extends Thread{
                 }
             }
                
-            System.out.println("Comienza a correr " +nombre);
+            //System.out.println("Comienza a correr " +nombre);
             avanzar();
          
         
@@ -52,26 +52,43 @@ public class JugadorTwo extends Thread{
     public void avanzar(){
          int posicion=0;
          int j=0;
-         lista.clear();
+         //lista.clear();
+          Collections.sort(lista);
         while(posicion != 20){
             try{
                 
-                Thread.sleep(500);
+                Thread.sleep(1000);
                 posicion = (int) Math.floor(Math.random()*(20-11+1)+11);
                 lista.add(posicion);
-                
+                  System.out.println(""+equipo);
+                System.out.println("Corredor 2 Progreso "+nombre);
+                for (int i=0;i<(int)lista.get(j);i++) {
+               
+                System.out.print("*");
+                }
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
             }catch(InterruptedException e){
                 
             }
            Collections.sort(lista);
-            System.out.println(lista.get(j));
-           
+            //System.out.println(lista.get(j));
+        
+            
             j++;
             
         }
         //volver a revisar la condicion
         lista.notifyAll();
       
+    }
+
+    public ArrayList getLista() {
+        return lista;
     }
     
     

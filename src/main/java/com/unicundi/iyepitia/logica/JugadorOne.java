@@ -18,6 +18,7 @@ public class JugadorOne extends Thread {
     private String nombre;
     private String equipo;
     private ArrayList lista = new ArrayList();
+   
     
 
      public JugadorOne(String nombre,ArrayList lista,String equipo) {
@@ -28,14 +29,14 @@ public class JugadorOne extends Thread {
     
     
     
-    
+    @Override
     public void run(){
        
          synchronized(lista){
              System.out.println("Comienza a correr "+nombre);
             avanzar();
             
-        
+            
         }
     }
     public void avanzar(){
@@ -43,20 +44,33 @@ public class JugadorOne extends Thread {
         int posicion=0;
         int j=0;
         while(posicion != 10){
+            
             try{
                 
-                Thread.sleep(500);
+                Thread.sleep(1000);
                 posicion = (int) Math.floor(Math.random()*(10-1+1)+1);
                 lista.add(posicion);
-                
+                System.out.println(""+equipo);
+                System.out.println("Corredor 1 Progreso "+nombre);
+                for (int i=0;i<(int)lista.get(j);i++) {
+               
+                System.out.print("*");
+                }
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
             }catch(InterruptedException e){
                 
             }
            Collections.sort(lista);
-            System.out.println(lista.get(j));
-          
+            //System.out.println(lista.get(j));
+            
             j++;
-        }
+            }
+        
         lista.notifyAll();
         
     }
@@ -71,8 +85,9 @@ public class JugadorOne extends Thread {
     public String getEquipo() {
         return equipo;
     }
+
     
-  
+    
     
     
     

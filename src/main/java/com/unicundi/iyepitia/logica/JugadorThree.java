@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javafx.application.Platform.exit;
+import jdk.nashorn.internal.ir.BreakNode;
 
 /**
  *
@@ -20,6 +21,7 @@ public class JugadorThree extends Thread {
     private String equipo;
     private String nombre;
     private ArrayList lista = new ArrayList();
+    private int estado2=1;
 
     public JugadorThree(String nombre,ArrayList lista,String equipo) {
         this.nombre = nombre;
@@ -28,7 +30,7 @@ public class JugadorThree extends Thread {
     }
     
    
-    
+    @Override
     public void run(){
         
         synchronized(lista){
@@ -42,7 +44,7 @@ public class JugadorThree extends Thread {
                     Logger.getLogger(JugadorTwo.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-                System.out.println("Comienza a correr "+nombre);
+                //System.out.println("Comienza a correr "+nombre);
             
                 avanzar();
          
@@ -53,24 +55,38 @@ public class JugadorThree extends Thread {
     public void avanzar(){
          int posicion=0;
          int j=0;
-         lista.clear();
+          Collections.sort(lista);
+         //lista.clear();
         while(posicion != 30){
             try{
                 
-                Thread.sleep(500);
+                Thread.sleep(1000);
                 posicion = (int) Math.floor(Math.random()*(30-21+1)+21);
                 lista.add(posicion);
-                
+                  System.out.println(""+equipo);
+                System.out.println("Corredor 3 Progreso "+nombre);
+                for (int i=0;i<(int)lista.get(j);i++) {
+               
+                System.out.print("*");
+                }
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
             }catch(InterruptedException e){
                 
             }
            Collections.sort(lista);
-            System.out.println(lista.get(j));
+            //System.out.println(lista.get(j));
            
+            
             j++;
             
         }
         if (lista.get(lista.size()-1).equals(30)){
+            //exit();
             estado="Ganador";
             System.out.println("Ganadores :"+equipo);
             System.exit(0);
@@ -85,4 +101,10 @@ public class JugadorThree extends Thread {
     public String getEstado() {
         return estado;
     }
+
+    public ArrayList getLista() {
+        return lista;
+    }
+    
+    
 }
