@@ -17,8 +17,20 @@ import java.util.logging.Logger;
 /**
  *
  * @author Ivan Espitia
+ * @author caren
+ * version 1.0.0
+ * 
+ */
+
+/**
+ * Clase Principal, envia los nombres y los respectivos equipos 
+ * 
  */
 public class principal {
+    /**
+     * Main, instancias, inicio de los Hilos a traves del metodo start  
+     * @param args 
+     */
     public static void main(String[] args) {
       ArrayList posicionesEquipo1 = new ArrayList();
       JugadorOne jug1Equipo1 = new JugadorOne("Ivan",posicionesEquipo1,"Equipo1");
@@ -55,9 +67,12 @@ public class principal {
         /////////////
         
         
-        //suspdender el hilo principal hasta que haya un ganador
+       /**
+        * Bucle While empleado para realizarse hasta que se genere un Ganador 
+        */
         while(jug3Equipo1.getEstado() != "Ganador" || jug3Equipo2.getEstado() != "Ganador"  || jug3Equipo3.getEstado() != "Ganador" ){
           try {
+              // Se detiene 1
               Thread.sleep(1);
               //System.out.println("");
           } catch (InterruptedException ex) {

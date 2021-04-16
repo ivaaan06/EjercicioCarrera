@@ -13,18 +13,35 @@ import java.util.logging.Logger;
 /**
  *
  * @author Ivan Espitia
+ * @autor Caren Rodriguez
+ */
+/**
+ * Clase JugadorThree extension de Thread, 
+ * en la cual se inicializan variables de tipo privado 
+ * y se realiza una instancia de ArrayList
+ * 
  */
 public class JugadorTwo extends Thread{
     private String equipo;
     private String nombre;
     private ArrayList lista = new ArrayList();
-   
+  /**
+ * Constructor 
+ * @param nombre
+ * @param lista
+ * @param equipo 
+ */ 
     public JugadorTwo(String nombre,ArrayList lista,String equipo) {
         this.nombre = nombre;
         this.lista = lista;
         this.equipo = equipo;
     }
-    
+   /**
+     * Metodo de la interfaz Runnable, empiezan a correr 
+     * los jugadores, según la condición, se entrara al if 
+     * en el cual se encuentra el wait, para dormir el hilo 
+     * según sea necesario, de lo contrario se llama el metodo avanzar.
+     */ 
     
     
     
@@ -49,6 +66,12 @@ public class JugadorTwo extends Thread{
          }
         
     }
+     // Finaliza Run 
+    /**
+     * Metodo en el cual se envian las posiciones para
+     * mostrar el prograso del hilo, y dentro de este 
+     * se hace una impresion para evidenciar como aumenta la posición
+     */
     public void avanzar(){
          int posicion=0;
          int j=0;
@@ -77,15 +100,24 @@ public class JugadorTwo extends Thread{
             }
            Collections.sort(lista);
             //System.out.println(lista.get(j));
-        
+         //System.out.println(lista.get(j));
+         // se aumenta el contador j
             
             j++;
             
         }
+        /**
+         * se notifica el Hilo para despertarlo 
+         */
         //volver a revisar la condicion
         lista.notifyAll();
       
     }
+     // Cierre metodo Avanzar 
+      /**
+     * Get de Lista
+     * @return 
+     */
 
     public ArrayList getLista() {
         return lista;

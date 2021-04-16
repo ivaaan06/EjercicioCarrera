@@ -15,6 +15,13 @@ import java.util.logging.Logger;
 /**
  *
  * @author Ivan Espitia
+ * @autor Caren Rodriguez
+ */
+/**
+ * Clase JugadorThree extension de Thread, 
+ * en la cual se inicializan variables de tipo privado 
+ * y se realiza una instancia de ArrayList
+ * 
  */
 public class JugadorThree extends Thread {
     private String estado;
@@ -22,13 +29,23 @@ public class JugadorThree extends Thread {
     private String nombre;
     private ArrayList lista = new ArrayList();
     private int estado2=1;
-
+/**
+ * Constructor 
+ * @param nombre
+ * @param lista
+ * @param equipo 
+ */
     public JugadorThree(String nombre,ArrayList lista,String equipo) {
         this.nombre = nombre;
         this.lista = lista;
         this.equipo = equipo;
     }
-    
+    /**
+     * Metodo de la interfaz Runnable, empiezan a correr 
+     * los jugadores, según la condición, se entrara al if 
+     * en el cual se encuentra el wait, para dormir el hilo 
+     * según sea necesario, de lo contrario se llama el metodo avanzar.
+     */
    
     @Override
     public void run(){
@@ -50,7 +67,12 @@ public class JugadorThree extends Thread {
          
         }
          
-        
+        // Finaliza Run 
+    /**
+     * Metodo en el cual se envian las posiciones para
+     * mostrar el prograso del hilo, y dentro de este 
+     * se hace una impresion para evidenciar como aumenta la posición
+     */
     }
     public void avanzar(){
          int posicion=0;
@@ -80,11 +102,14 @@ public class JugadorThree extends Thread {
             }
            Collections.sort(lista);
             //System.out.println(lista.get(j));
-           
+            // se aumenta el contador j
             
             j++;
             
         }
+        /**
+         * se notifica el Hilo para despertarlo 
+         */
         if (lista.get(lista.size()-1).equals(30)){
             //exit();
             estado="Ganador";
@@ -97,11 +122,21 @@ public class JugadorThree extends Thread {
         
       
     }
+    // Cierre metodo Avanzar 
+      /**
+     * Get de Estado 
+     * @return 
+     */
 
     public String getEstado() {
         return estado;
     }
 
+        /**
+     * Get de Lista
+     * @return 
+     */
+    
     public ArrayList getLista() {
         return lista;
     }

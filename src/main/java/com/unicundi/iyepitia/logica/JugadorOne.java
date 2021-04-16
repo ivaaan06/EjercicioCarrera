@@ -13,13 +13,26 @@ import java.util.Vector;
 /**
  *
  * @author Ivan Espitia
+ * @author Caren Rodriguez
+ */
+/**
+ * 
+ * Clase publica de los jugadores no 1 de cada equipo, 
+ * con una extensión a la clase Thread, la cual inicializa
+ * valiables privadas y un ArrayList
  */
 public class JugadorOne extends Thread {
     private String nombre;
     private String equipo;
     private ArrayList lista = new ArrayList();
    
-    
+    /**
+     * 
+     * @param nombre
+     * @param lista
+     * @param equipo 
+     * Constructor de la clase 
+     */
 
      public JugadorOne(String nombre,ArrayList lista,String equipo) {
         this.nombre = nombre;
@@ -28,7 +41,10 @@ public class JugadorOne extends Thread {
     }
     
     
-    
+    /**
+     * Metodo de la interfaz Runnable, empiezan a correr 
+     * los jugadores, y llama al metodo avanzar.
+     */
     @Override
     public void run(){
        
@@ -38,7 +54,13 @@ public class JugadorOne extends Thread {
             
             
         }
-    }
+         
+    }// Finaliza Run 
+    /**
+     * Metodo en el cual se envian las posiciones para
+     * mostrar el prograso del hilo, y dentro de este 
+     * se hace una impresion para evidenciar como aumenta la posición
+     */
     public void avanzar(){
         
         int posicion=0;
@@ -67,21 +89,33 @@ public class JugadorOne extends Thread {
             }
            Collections.sort(lista);
             //System.out.println(lista.get(j));
-            
+            // se aumenta el contador j
             j++;
             }
-        
+        /**
+         * se notifica el Hilo para despertarlo 
+         */
         lista.notifyAll();
         
-    }
-
+    }// Cierre metodo Avanzar 
+      /**
+     * Get de lista 
+     * @return 
+     */
     public ArrayList getLista() {
         return lista;
     }
+    /**
+     * Get de Nombre 
+     * @return 
+     */
     public String getNombre() {
         return nombre;
     }
-
+    /**
+     * Get de Equipo 
+     * @return 
+     */
     public String getEquipo() {
         return equipo;
     }
