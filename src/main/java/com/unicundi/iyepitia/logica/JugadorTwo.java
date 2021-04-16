@@ -21,9 +21,18 @@ import java.util.logging.Logger;
  * y se realiza una instancia de ArrayList
  * 
  */
-public class JugadorTwo extends Thread{
+public class JugadorTwo extends Thread implements IEquipo{
+    /**
+     * indica el nombre del jugador 2
+     */
     private String equipo;
+    /**
+     * indica el nombre del equipo
+     */
     private String nombre;
+    /**
+     * indica las posiciones que toma el jugador 2
+     */
     private ArrayList lista = new ArrayList();
   /**
  * Constructor 
@@ -75,7 +84,7 @@ public class JugadorTwo extends Thread{
     public void avanzar(){
          int posicion=0;
          int j=0;
-         //lista.clear();
+         lista.clear();
           Collections.sort(lista);
         while(posicion != 20){
             try{
@@ -83,8 +92,8 @@ public class JugadorTwo extends Thread{
                 Thread.sleep(1000);
                 posicion = (int) Math.floor(Math.random()*(20-11+1)+11);
                 lista.add(posicion);
-                  System.out.println(""+equipo);
-                System.out.println("Corredor 2 Progreso "+nombre);
+                System.out.println(""+equipo);
+                System.out.println("Corredor 2 "+nombre+" Progreso ");
                 for (int i=0;i<(int)lista.get(j);i++) {
                
                 System.out.print("*");

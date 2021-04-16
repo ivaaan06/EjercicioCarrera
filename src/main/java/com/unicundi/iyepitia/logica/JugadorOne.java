@@ -21,9 +21,18 @@ import java.util.Vector;
  * con una extensión a la clase Thread, la cual inicializa
  * valiables privadas y un ArrayList
  */
-public class JugadorOne extends Thread {
+public class JugadorOne extends Thread implements IEquipo{
+    /**
+     * indica el nombre del jugador 1
+     */
     private String nombre;
+     /**
+     * indica el nombre del equipo
+     */
     private String equipo;
+    /**
+     * indica las posiciones que toma el jugador 1
+     */
     private ArrayList lista = new ArrayList();
    
     /**
@@ -73,7 +82,7 @@ public class JugadorOne extends Thread {
                 posicion = (int) Math.floor(Math.random()*(10-1+1)+1);
                 lista.add(posicion);
                 System.out.println(""+equipo);
-                System.out.println("Corredor 1 Progreso "+nombre);
+                System.out.println("Corredor 1 "+nombre+ " Progreso ");
                 for (int i=0;i<(int)lista.get(j);i++) {
                
                 System.out.print("*");

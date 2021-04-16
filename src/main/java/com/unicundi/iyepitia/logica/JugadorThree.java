@@ -23,12 +23,24 @@ import java.util.logging.Logger;
  * y se realiza una instancia de ArrayList
  * 
  */
-public class JugadorThree extends Thread {
+public class JugadorThree extends Thread implements IEquipo{
+    /**
+     * indica el estado ganador
+     */
     private String estado;
+    /**
+     * indica el nombre del equipo
+     */
     private String equipo;
+    /**
+     * indica el nombre del jugador 3
+     */
     private String nombre;
+    /**
+     * indica las posiciones que toma el jugador 3
+     */
     private ArrayList lista = new ArrayList();
-    private int estado2=1;
+    
 /**
  * Constructor 
  * @param nombre
@@ -78,7 +90,7 @@ public class JugadorThree extends Thread {
          int posicion=0;
          int j=0;
           Collections.sort(lista);
-         //lista.clear();
+         lista.clear();
         while(posicion != 30){
             try{
                 
@@ -86,7 +98,7 @@ public class JugadorThree extends Thread {
                 posicion = (int) Math.floor(Math.random()*(30-21+1)+21);
                 lista.add(posicion);
                   System.out.println(""+equipo);
-                System.out.println("Corredor 3 Progreso "+nombre);
+                System.out.println("Corredor 3 "+nombre +" Progreso ");
                 for (int i=0;i<(int)lista.get(j);i++) {
                
                 System.out.print("*");
